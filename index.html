@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection and Mitigation of Sample Bias</title>
+</head>
+<body>
+
+    <header>
+        <h1>Detection and Mitigation of Sample Bias</h1>
+    </header>
+
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <p>
+            Whereas artificial intelligence has brought significant advancements across various industry sectors, it has also highlighted the issue of sampling bias, which can undermine the fairness and accuracy of AI systems. If the training data is not representative, the resulting models will be biased and inequitable. This issue is crucial in developing fair and reliable AI systems. This paper explores strategies for detecting and mitigating sampling bias to achieve more accurate and fair AI predictions.
+        </p>
+    </section>
+
+    <section id="literature-survey">
+        <h2>Literature Survey</h2>
+        <p>
+            Sampling bias occurs when a sample does not accurately represent the population it was drawn from, leading to biased interpretations. It can manifest in various forms such as selection bias, self-selection bias, and undercoverage bias.
+        </p>
+        <p>
+            Techniques for identifying sampling bias include comparing sample features with known population parameters using statistical tests like the chi-squared test. Methods to address this issue include random sampling, stratified sampling, and post-stratification.
+        </p>
+        <p>
+            Bias in AI can amplify existing inequalities, particularly affecting marginalized groups, and can result in societal harms such as the reinforcement of stereotypes. Bias mitigation strategies in AI include representative data collection, careful model selection, and adjustments in post-processing to ensure fairness.
+        </p>
+    </section>
+
+    <section id="methodology">
+        <h2>Methodology</h2>
+        <p>
+            Four sample bias mitigation strategies—SMOTE, in-processing, random sampling, and hybrid approaches—were implemented and assessed. Each strategy was applied to models, and their performance was evaluated using metrics like accuracy and demographic parity difference.
+        </p>
+        <h3>Identifying Sampling Bias</h3>
+        <p>
+            Descriptive statistics were used to analyze the distribution of demographic categories within the dataset. For example, the distribution of people by sex and race was examined.
+        </p>
+        <h3>Class Imbalance</h3>
+        <p>
+            The target variable showed an imbalance, with most cases falling into one class. This imbalance could lead to skewed predictions favoring the majority class.
+        </p>
+        <h3>Fairness Metrics</h3>
+        <p>
+            Fairness metrics such as Equalized Odds Difference and Demographic Parity Difference were used to assess the initial model's fairness.
+        </p>
+    </section>
+
+    <section id="dataset-preparation">
+        <h2>Dataset Preparation</h2>
+        <p>
+            The UCI Adult Income dataset was used, containing various socioeconomic and demographic characteristics. The dataset was prepared by loading the data, handling missing values, and applying one-hot encoding to categorical variables. Features and target variables were defined, and the data was split into training and testing sets.
+        </p>
+    </section>
+
+    <section id="results">
+        <h2>Results</h2>
+        <h3>SMOTE</h3>
+        <p>
+            SMOTE was used to oversample the minority class, achieving an accuracy of 61.27%. However, significant racial bias was still present, with a demographic parity difference of 30.57% for race.
+        </p>
+        <h3>In-Processing Method</h3>
+        <p>
+            Using Fairlearn, a logistic regression classifier was optimized to satisfy demographic parity constraints, achieving an accuracy of 84.72%. The best model had demographic parity differences of 17.01% for sex and 23.22% for race.
+        </p>
+        <h3>Hybrid Method</h3>
+        <p>
+            The hybrid method, combining pre-processing and in-processing techniques, resulted in an accuracy of 84.12%. Despite this, bias persisted with demographic parity differences of 20.8% for race and 17.7% for sex.
+        </p>
+        <h3>Random Sampling</h3>
+        <p>
+            Random sampling balanced the dataset, achieving an accuracy of 79.21%. This method showed a fair reduction of bias across both sensitive traits.
+        </p>
+    </section>
+
+    <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+            Four distinct bias mitigation strategies—SMOTE, in-processing, hybrid approach, and random sampling—were tested to address sample bias. Random Sampling emerged as the most balanced approach, offering a reasonable trade-off between fairness and model performance.
+        </p>
+    </section>
+
+    <section id="references">
+        <h2>References</h2>
+        <ul>
+            <li>Panzeri S., Magri C., & Carraro L. (2008). Sampling bias. Scholarpedia Journal, 3(9), 4258. <a href="https://doi.org/10.4249/scholarpedia.4258">https://doi.org/10.4249/scholarpedia.4258</a></li>
+            <li>Ferrara E. (2023). Fairness and Bias in Artificial Intelligence: A brief survey of sources, impacts, and mitigation strategies. Sci, 6(1), 3. <a href="https://doi.org/10.3390/sci6010003">https://doi.org/10.3390/sci6010003</a></li>
+            <li>Chakraborty J., Majumder S., & Menzies T. (2021). Bias in machine learning software: why? how? what to do? <a href="https://doi.org/10.1145/3468264.3468537">https://doi.org/10.1145/3468264.3468537</a></li>
+            <li>Qraitem M., Saenko K., & Plummer B. A. (2022). Bias Mimicking: A Simple Sampling Approach for Bias Mitigation. arXiv.org. <a href="https://arxiv.org/abs/2209.15605">https://arxiv.org/abs/2209.15605</a></li>
+            <li>BeckerBarry and KohaviRonny. (1996). Adult. UCI Machine Learning Repository. <a href="https://doi.org/10.24432/C5XW20">https://doi.org/10.24432/C5XW20</a></li>
+        </ul>
+    </section>
+
+</body>
+</html>
